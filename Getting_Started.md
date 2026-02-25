@@ -363,30 +363,6 @@ start Android.
 > **Note**
 > You can select to use NVME or SATA as the storage.
 
-## Git Setup for build environment
-Git must be set up on your build machine to run repo init. Use the command below as a guideline:  
-
-\# Setup git config with your name and email ID. Add proxy settings if behind a firewall  
-
-cd /home/$USER  
-vi /home/$USER/.gitconfig  
-
-\# Append below lines to .gitconfig file  
-```
-[user]  
-    email = <your email>  
-    name = <your name>  
-[http]  
-    proxy = <http_proxy>  
-[https]  
-    proxy = <https_proxy>  
-```
-Create a symbolic link for Python 3 in the ‘/usr/bin’ directory.
-sudo ln -sf /usr/bin/python3 /usr/bin/python
-
-Note: The instruction for the Celadon project can be found on this website.
-
-
 # Disclaimer
 
 You may not use or facilitate the use of this document in connection
@@ -425,6 +401,7 @@ under license.
 © Intel Corporation. Intel, the Intel logo, and other Intel marks are
 trademarks of Intel Corporation or its subsidiaries. Other names and
 brands may be claimed as the property of others.
+
 
 
 
