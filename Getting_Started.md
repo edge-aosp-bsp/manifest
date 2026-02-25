@@ -295,21 +295,20 @@ First, extract the caas-flashfile-\<\$variant\>.iso.zip file.
 #### Select the ISO Image to Flash
 
 <p align="center">
-  <img src="./media/image1.png" alt="A screenshot of a computer. AI-generated content may be incorrect." />
+  <img src="./media/image1.png" alt="Select the ISO Image to Flash" />
 </p>
 
 #### Example of Flashing in Progress
 
 <p align="center">
-  <img src="./media/image2.png" alt="A screenshot of a computer AI-generated content may be incorrect.">
+  <img src="./media/image2.png" alt="Example of Flashing in Progress">
 </p>
 
 #### Flashing Completed
 
 <p align="center">
-  <img src="./media/image3.png" alt="A screenshot of a computer (AI-generated content may be incorrect.)">
+  <img src="./media/image3.png" alt="Flashing Completed">
 </p>
-
 
 Alternatively, on Ubuntu, you can also use the dd command.
 
@@ -322,46 +321,37 @@ dd if=./caas-flashfile-userdebug.iso of=/dev/sdc bs=1024M
 
 ```
 
-> Insert the USB disk into the CRB.Press F2 while booting the
-> device.Select the USB disk to boot as shown in
-> [[Figure 4]{.underline}](#_Ref209528344). Go to: **Boot Maintenance 🡪
-> Boot Option Menu 🡪 Change Boot Order**
-
 ### Step 2: Flash to BM from USB Stick to Boot up the System to Android
 
 1. Insert the USB disk into the CRB.
 2. Press **F2** while booting the device.
-3. Select the USB disk to boot as shown in *Figure 4*. Navigate to:  
+3. Select the USB disk to boot as shown in below. Navigate to:  
    
    **Boot Maintenance → Boot Option Menu → Change Boot Order**
 4. Set the USB disk as the first boot option. Save the changes (**Fn + F4**) and exit the BIOS (select **Continue**).
 
 #### BIOS Settings to Change Boot Order
 
-![A screen shot of a computer AI-generated content may be
-incorrect.](./media/image4.png)
+![BIOS Settings to Change Boot Order](./media/image4.png)
 
 5. Press UP arrow, PG UP, RIGHT, or HOME to proceed with installation.
 
 #### Installer Screen
 
-![A blue square with white text on it AI-generated content may be
-incorrect.](./media/image5.png)
+![Installer Screen](./media/image5.png)
 
 6. This initiates the flashing. 
 
 **Android Installation Progress**
 
-![A computer screen shot of white text AI-generated content may be
-incorrect.](./media/image6.png)
+![Android Installation Progress](./media/image6.png)
 
 7. Remove the USB disk and reboot. The device will finish flashing and
 start Android.
 
 #### Android Home Screen
 
-![A screenshot of a computer AI-generated content may be
-incorrect.](./media/image7.png)
+![Android Home Screen](./media/image7.png)
 
 > **Note**
 > You can select to use NVME or SATA as the storage.
@@ -428,3 +418,4 @@ under license.
 © Intel Corporation. Intel, the Intel logo, and other Intel marks are
 trademarks of Intel Corporation or its subsidiaries. Other names and
 brands may be claimed as the property of others.
+
