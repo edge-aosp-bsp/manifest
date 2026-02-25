@@ -1,5 +1,6 @@
 # Release Notes
-## Android * AOSP Base BSP Reference Release for Intel® Edge Platforms
+## Android* AOSP Base BSP Reference Release for Intel® Edge Platforms (14th Gen)
+
 
 Engineering Candidate 1 Release 
 
@@ -187,4 +188,5 @@ under license.
 © Intel Corporation. Intel, the Intel logo, and other Intel marks are
 trademarks of Intel Corporation or its subsidiaries. Other names and
 brands may be claimed as the property of others.
+
 
