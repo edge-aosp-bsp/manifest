@@ -3,20 +3,20 @@
 
    <remote  name="aosp"
             fetch="https://android-review.googlesource.com" />
-   <default revision="refs/tags/android-15.0.0_r20"
+   <default revision="refs/tags/android-16.0.0_r2"
             remote="aosp"
-            sync-j="7" />
+            sync-j="4" />
 
   <remote  name="github.intel"
            fetch="https://github.com/intel/" />
   <remote  name="github"
-           fetch="https://github.com/projectceladon/" />
+           fetch="https://github.com/edge-aosp-bsp/" />
   <remote name="kernel.googlesource"
 	  fetch="https://kernel.googlesource.com/" />
 
   <include name="include/aosp_vanilla.xml" />
   <include name="include/aosp_legacy.xml" />
-  <include name="include/bsp-celadon.xml" />
-  <include name="include/celadon-manifest.xml" />
+  <include name="include/bsp-edge.xml" />
+  <include name="include/edge-manifest.xml" />
 
 </manifest>
