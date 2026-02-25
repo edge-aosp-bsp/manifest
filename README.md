@@ -1,5 +1,5 @@
 # Release Notes
-## Android* AOSP Base BSP Reference Release for Intel® Edge Platforms (14th Gen)
+## Android* AOSP Base BSP Reference Release for Intel® Edge Platforms (Intel® Core™ i5 processor 14500T)
 
 
 Engineering Candidate 1 Release 
@@ -8,9 +8,9 @@ February 2026
 
 # 1.0 Introduction
 
-This document provides release specific information about the AOSP Base BSP reference stack release supported on Intel Edge Platforms (Intel® Core™ Processors (14th Gen)) running Android in a bare-metal OS environment.  
+This document provides release specific information about the AOSP Base BSP reference stack release supported on Intel Edge Platforms (Intel® Core™ i5 processor 14500T) running Android in a bare-metal OS environment.  
 
-For instructions on building and loading Android* OS on the Intel® Core™ Processors (14th Gen) for Edge Platforms Customer Reference Board, refer to the Android* OS on Intel® Core™ Processors (14th Gen) for Edge Platforms (Code named Raptor Lake‑S Refresh) Getting Started Guide (Published in [GitHub](https://github.com/edge-aosp-bsp/manifest/tree/master)).
+For instructions on building and loading Android* OS on the Intel® Core™ i5 processor 14500T for Edge Platforms, refer to the Android* OS on Intel® Core™ i5 processor 14500T for Edge Platforms Getting Started Guide (Published in [GitHub](https://github.com/edge-aosp-bsp/manifest/tree/master)).
 
     
 > **Note**
@@ -32,13 +32,14 @@ only. It is not for production use.
 | ISV                      | Independent Software Vendor                                     |
 | NVME                     | Non‑Volatile Memory Express                                     |
 | AVB                      | Android Verified Boot                     |
-
+| RDC                      | Resource and Documentation Center                     |
+| RVP                      | Reference Validation Platform                     |
 
 
 ## Intended Audience
 
 This document is intended for OSVs/ISVs interested in using Android\* on
-Intel® Core™ Processors (14th Gen) for Edge Platforms to enable their
+Intel® Core™ i5 processor 14500T for Edge Platforms to enable their
 customers.
 
 ## Customer Support
@@ -48,9 +49,9 @@ Contact your Intel representative for support or submit an issue to
 
 ## Reference Documents
 
-| Document | Document No./Location |
+| Documentation on GitHub | Document No./Location |
 |---------|------------------------|
-| Android OS on Intel® Core™ Processors (14th Gen) for Edge Applications for Edge Applications (Code named Raptor Lake‑S Refresh) – Get started guide |  [GitHub](https://github.com/edge-aosp-bsp/manifest/tree/master) |
+| Android OS on Intel® Core™ i5 processor 14500T for Edge Applications – Get started guide |  [GitHub](https://github.com/edge-aosp-bsp/manifest/tree/master) |
 | Raptor Lake‑S Refresh Android Manifest File | [GitHub](https://github.com/edge-aosp-bsp/manifest/tree/master) |
 
 Log in to the Resource and Documentation Center
@@ -62,9 +63,9 @@ table. Contact your Intel field representative for access.
 > Third-party links are provided as a reference only. Intel does not control or audit third-party benchmark data or the websites referenced in this document. You should visit the referenced website and confirm whether the referenced data are accurate. 
 
 
-| Document | Document No./Location |
+| Documentation on Intel RDC | Document No./Location |
 |---------|------------------------|
-| 13th Gen Intel® Core™ Processors and Intel® Core™ Processors (14th Gen) (Code named Raptor Lake‑S/S Refresh) for Edge Platforms Reference UEFI BIOS/IFWI Version 6311_00 – IFWI Release Notes & Package |  [865275](https://www.intel.com/content/www/us/en/secure/content-details/865275/content-details.html) |
+| 13th Gen Intel® Core™ Processors and Intel® Core™ i5 processor 14500T (Code named Raptor Lake‑S/S Refresh) for Edge Platforms Reference UEFI BIOS/IFWI Version 6311_00 – IFWI Release Notes & Package |  [865275](https://www.intel.com/content/www/us/en/secure/content-details/865275/content-details.html) |
 
 
 
@@ -73,26 +74,21 @@ table. Contact your Intel field representative for access.
 This section shows the compatible hardware and software configuration for this release.  
 
 
-## Hardware
+## Hardware Configuration
 
-1. **CRB**: Intel® Core™ Processors (14th Gen) for Edge Platforms Customer Reference Board (CRB)
+1. **RVP**: SR14 Raptor Lake‑S RVP
 
 2. **Silicon**: QS / PRQ Silicon
    - Intel® Core™ i5 processor 14500T
 
 ---
 
-## Software BKC
+## Software Configuration
 
-1. **Android* OS**:  
-   Android* OS on Intel® Core™ Processors (14th Gen) for Edge Platforms (Code‑named Raptor Lake‑S Refresh) *Get Started Guide* (published on [GitHub](https://github.com/edge-aosp-bsp/manifest/tree/master))
-   
-   EC1 Manifest: **BM_BSP_2026_Q1_V1_A16.xml**
+1. EC1 Manifest File: [GitHub -BM_BSP_2026_Q1_V1_A16.xml](https://github.com/edge-aosp-bsp/manifest/tree/master)
 
 2. UEFI Reference BIOS:
    - Release Notes & Package [865275](https://www.intel.com/content/www/us/en/secure/content-details/865275/content-details.html)
-
-3. Raptor Lake‑S Refresh Android Manifest File: [GitHub](https://github.com/edge-aosp-bsp/manifest/tree/master)
 
 
 # 3.0	Component Release Notes
@@ -188,5 +184,6 @@ under license.
 © Intel Corporation. Intel, the Intel logo, and other Intel marks are
 trademarks of Intel Corporation or its subsidiaries. Other names and
 brands may be claimed as the property of others.
+
 
 
