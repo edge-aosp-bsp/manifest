@@ -50,6 +50,7 @@ references, refer to the following documents:
 | VT-d            | Virtualization Technology for Directed I/O                                   |
 | EC           | Engineering Candidate                                   |
 | RDC           | Resource and Documentation Center                                   |
+| RVP | Reference Validation Platform |
 
 
 ## Intended Audience
@@ -424,6 +425,7 @@ under license.
 © Intel Corporation. Intel, the Intel logo, and other Intel marks are
 trademarks of Intel Corporation or its subsidiaries. Other names and
 brands may be claimed as the property of others.
+
 
 
 
