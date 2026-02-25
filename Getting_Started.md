@@ -215,7 +215,7 @@ cd ~/rpl-android-bm
 3.  Download the source code from the manifest.# For the latest on the branch:
 ```bash
 # For the latest on the branch:
-repo init -u https://github.com/edgeaosp-bsp/manifest.git  
+repo init -u https://github.com/edge-aosp-bsp/manifest.git  
 
 # copy the manifest to .repo/manifests
 mkdir .repo/manifests
@@ -425,6 +425,7 @@ under license.
 © Intel Corporation. Intel, the Intel logo, and other Intel marks are
 trademarks of Intel Corporation or its subsidiaries. Other names and
 brands may be claimed as the property of others.
+
 
 
 
