@@ -64,6 +64,12 @@ Contact your Intel representative for support or submit an issue to
 
 ## Reference Documents
 
+| Document | Document No./Location |
+|---------|------------------------|
+| Android* OS on Intel® Core™ Processors (14th Gen) for Edge Platforms (Code named Raptor Lake‑S Refresh) – Release Notes |  [GitHub](https://github.com/edge-aosp-bsp/manifest/tree/master) |
+| Raptor Lake‑S Refresh Android Manifest File | [GitHub](https://github.com/edge-aosp-bsp/manifest/tree/master) |
+
+
 Log in to the Resource and Documentation Center
 ([rdc.intel.com](https://www.intel.com/content/www/us/en/resources-documentation/developer.html))
 to search for and download the document numbers listed in the following
@@ -75,9 +81,8 @@ table. Contact your Intel field representative for access.
 
 | Document | Document No./Location |
 |---------|------------------------|
-| Android* OS on Intel® Core™ Processors (14th Gen) for Edge Platforms (Code named Raptor Lake‑S Refresh) – Release Notes |  [GitHub](https://github.com/edge-aosp-bsp/manifest/tree/master) |
 | 13th Gen Intel® Core™ Processors and Intel® Core™ Processors (14th Gen) (Code named Raptor Lake‑S/S Refresh) for Edge Platforms Reference UEFI BIOS/IFWI Version 6311_00 – IFWI Release Notes & Package |  [865275](https://www.intel.com/content/www/us/en/secure/content-details/865275/content-details.html) |
-| Raptor Lake‑S Refresh Android Manifest File | [GitHub](https://github.com/edge-aosp-bsp/manifest/tree/master) |
+
 
 
 
@@ -99,7 +104,7 @@ released by Google.
 workstation is required to check out the source code and store build
 artifacts.
 
-### **Intel® Core™ Processors (14th Gen)** for Edge Platforms CRB
+### **Intel® Core™ Processors (14th Gen)** for Edge Platforms 
 * Contains the latest supported **Intel® Core™ Processors (14th Gen) for Edge
 Platforms** silicon.
 * A minimum of **500 GB of storage**. 
@@ -254,7 +259,7 @@ out/target/product/caas/caas-releasefiles-userdebug.tar.gz
 # Android\* Image Flashing and Boot up
 
 This section describes the steps required to configure the BIOS and
-prepare the USB disk for flashing the image to the CRB.
+prepare the USB drive for flashing the image to the board.
 
 ## BIOS Settings 
 
@@ -278,16 +283,16 @@ BIOS menu.
 > **Note**
 > The steps may vary depending on the BIOS.
 
-## Flash Image to USB Disk
+## Flash Image to USB Drive
 
 There are 2 steps to flash **caas-flashfile-\<\$variant\>.iso.zip** to
 BM. 
 
-### Step 1: Flash Image to the USB Disk
+### Step 1: Flash Image to the USB Drive
 
 On a Windows\* machine, use the Rufus application or another tool to
 create a bootable USB stick
-from **caas-flashfile-\<\$variant\>.iso.zip** to USB disk. The Rufus app
+from **caas-flashfile-\<\$variant\>.iso.zip** to USB drive. The Rufus app
 can be downloaded from <https://rufus.ie/en/>
 
 First, extract the caas-flashfile-\<\$variant\>.iso.zip file.
@@ -323,12 +328,12 @@ dd if=./caas-flashfile-userdebug.iso of=/dev/sdc bs=1024M
 
 ### Step 2: Flash to BM from USB Stick to Boot up the System to Android
 
-1. Insert the USB disk into the CRB.
+1. Insert the USB drive into the board.
 2. Press **F2** while booting the device.
-3. Select the USB disk to boot as shown in below. Navigate to:  
+3. Select the USB drive to boot as shown in below. Navigate to:  
    
    **Boot Maintenance → Boot Option Menu → Change Boot Order**
-4. Set the USB disk as the first boot option. Save the changes (**Fn + F4**) and exit the BIOS (select **Continue**).
+4. Set the USB drive as the first boot option. Save the changes (**Fn + F4**) and exit the BIOS (select **Continue**).
 
 #### BIOS Settings to Change Boot Order
 
@@ -346,7 +351,7 @@ dd if=./caas-flashfile-userdebug.iso of=/dev/sdc bs=1024M
 
 ![Android Installation Progress](./media/image6.png)
 
-7. Remove the USB disk and reboot. The device will finish flashing and
+7. Remove the USB drive and reboot. The device will finish flashing and
 start Android.
 
 #### Android Home Screen
@@ -418,4 +423,5 @@ under license.
 © Intel Corporation. Intel, the Intel logo, and other Intel marks are
 trademarks of Intel Corporation or its subsidiaries. Other names and
 brands may be claimed as the property of others.
+
 
