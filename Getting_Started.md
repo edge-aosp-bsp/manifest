@@ -18,7 +18,7 @@ You are recommended to review the release information before proceeding
 with this Get Started Guide. For release information, notes, and
 references, refer to the following documents:
 
-* Android\* OS on Intel® Core™ Processors (14th Gen) for Edge Platforms (Code named Raptor Lake‑S Refresh) -- Release Notes (Published in [GitHub](https://github.com/edge-aosp-bsp/manifest/blob/master/README.md) 
+* Android\* OS on Intel® Core™ Processors (14th Gen) for Edge Platforms (Code named Raptor Lake‑S Refresh) -- Release Notes (Published in [GitHub](https://github.com/edge-aosp-bsp/manifest/blob/master/README.md)) 
 
 # Terminology
 
@@ -422,6 +422,7 @@ under license.
 © Intel Corporation. Intel, the Intel logo, and other Intel marks are
 trademarks of Intel Corporation or its subsidiaries. Other names and
 brands may be claimed as the property of others.
+
 
 
 
