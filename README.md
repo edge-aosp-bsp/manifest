@@ -10,7 +10,7 @@ February 2026
 
 This document provides release specific information about the Android* base BSP reference stack release supported on Intel Edge Platforms (Intel® Core™ i5 processor 14500T) running Android* in a bare-metal OS environment.  
 
-For instructions on building and loading Android* OS on the Intel® Core™ i5 processor 14500T for Edge Platforms, refer to the Android* OS on Intel® Core™ i5 processor 14500T for Edge Platforms Getting Started Guide (Published in [GitHub](https://github.com/edge-aosp-bsp/manifest/tree/master)).
+For instructions on building and loading Android* OS on the Intel® Core™ i5 processor 14500T for Edge Platforms, refer to the Android* OS on Intel® Core™ i5 processor 14500T for Edge Platforms Getting Started Guide (Published in [GitHub](https://github.com/edge-aosp-bsp/manifest/blob/master/Getting_Started.md)).
 
     
 > **Note**
@@ -52,8 +52,8 @@ Contact your Intel representative for support or submit an issue to
 
 | Documentation on GitHub | Document No./Location |
 |---------|------------------------|
-| Android* base BSP Reference Release for Intel® Edge Platforms (Intel® Core™ i5 processor 14500T) – Get started guide |  [GitHub](https://github.com/edge-aosp-bsp/manifest/tree/master) |
-| Raptor Lake‑S Refresh Android Manifest File | [GitHub](https://github.com/edge-aosp-bsp/manifest/tree/master) |
+| Android* base BSP Reference Release for Intel® Edge Platforms (Intel® Core™ i5 processor 14500T) – Get started guide |  [GitHub](https://github.com/edge-aosp-bsp/manifest/blob/master/Getting_Started.md) |
+| Raptor Lake‑S Refresh Android Manifest File | [GitHub](https://github.com/edge-aosp-bsp/manifest/blob/master/stable-build/A16/BM_BSP_2026_Q1_v1_A16.xml) |
 
 Log in to the Resource and Documentation Center
 ([rdc.intel.com](https://www.intel.com/content/www/us/en/resources-documentation/developer.html))
@@ -86,7 +86,7 @@ This section shows the compatible hardware and software configuration for this r
 
 ## Software Configuration
 
-1. EC1 Manifest File: [GitHub - BM_BSP_2026_Q1_V1_A16.xml](https://github.com/edge-aosp-bsp/manifest/tree/master)
+1. EC1 Manifest File: [GitHub - BM_BSP_2026_Q1_V1_A16.xml](https://github.com/edge-aosp-bsp/manifest/blob/master/stable-build/A16/BM_BSP_2026_Q1_v1_A16.xml)
 
 2. UEFI Reference BIOS:
    - Release Notes & Package [865275](https://www.intel.com/content/www/us/en/secure/content-details/865275/content-details.html)
@@ -185,6 +185,7 @@ under license.
 © Intel Corporation. Intel, the Intel logo, and other Intel marks are
 trademarks of Intel Corporation or its subsidiaries. Other names and
 brands may be claimed as the property of others.
+
 
 
 
