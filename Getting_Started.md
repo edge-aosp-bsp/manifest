@@ -8,7 +8,7 @@ February 2026
 # Introduction
 
 This document provides instructions for building and loading Android\*
-OS on Intel® Core™ Processors (14th Gen) for Edge Platforms.
+OS on Intel® Core™ i5 processor 14500T for Edge Platforms.
     
 > **Note:**
 > This release is intended for testing and evaluation on the platform
@@ -18,7 +18,7 @@ You are recommended to review the release information before proceeding
 with this Getting Started Guide. For release information, notes, and
 references, refer to the following documents:
 
-* Android* Base BSP Reference Release for Intel® Edge Platforms (Intel® Core™ i5 processor 14500T) Release Notes (Published in [GitHub](https://github.com/edge-aosp-bsp/manifest/tree/master)) 
+* Android* Base BSP Reference Release for Intel® Edge Platforms (Intel® Core™ i5 processor 14500T) Release Notes (Published in [GitHub](https://github.com/edge-aosp-bsp/manifest/blob/master/README.md)) 
 
 # Terminology
 
@@ -68,8 +68,8 @@ Contact your Intel representative for support or submit an issue to
 
 | Documentation on GitHub | Document No./Location |
 |---------|------------------------|
-| Android* Base BSP Reference Release for Intel® Edge Platforms (Intel® Core™ i5 processor 14500T) Release Notes |  [GitHub](https://github.com/edge-aosp-bsp/manifest/tree/master) |
-| Raptor Lake‑S Refresh Android Manifest File | [GitHub](https://github.com/edge-aosp-bsp/manifest/tree/master) |
+| Android* Base BSP Reference Release for Intel® Edge Platforms (Intel® Core™ i5 processor 14500T) Release Notes |  [GitHub](https://github.com/edge-aosp-bsp/manifest/blob/master/README.md) |
+| Raptor Lake‑S Refresh Android Manifest File | [GitHub](https://github.com/edge-aosp-bsp/manifest/blob/master/stable-build/A16/BM_BSP_2026_Q1_v1_A16.xml) |
 
 
 Log in to the Resource and Documentation Center
@@ -200,7 +200,7 @@ code using the specified manifest and for building the Android BSP.
 
 The manifest for this release, **BM_BSP_2026_Q1_v1_A16.xml,** is
 available for download from
-[GitHub](https://github.com/edge-aosp-bsp/manifest/tree/master/stable-build) directory.
+[GitHub](https://github.com/edge-aosp-bsp/manifest/blob/master/stable-build/A16/BM_BSP_2026_Q1_v1_A16.xml) directory.
 
 1.  Download the manifest for this release: **BM_BSP_2026_Q1_v1_A16.xml**
 
@@ -384,8 +384,6 @@ vi /home/$USER/.gitconfig
 Create a symbolic link for Python 3 in the ‘/usr/bin’ directory.
 sudo ln -sf /usr/bin/python3 /usr/bin/python
 
-Note: The instruction for the Celadon project can be found on this website.
-
 
 # Disclaimer
 
@@ -425,6 +423,7 @@ under license.
 © Intel Corporation. Intel, the Intel logo, and other Intel marks are
 trademarks of Intel Corporation or its subsidiaries. Other names and
 brands may be claimed as the property of others.
+
 
 
 
