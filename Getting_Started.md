@@ -1,5 +1,5 @@
 # Getting Started Guide
-## Android* AOSP Base BSP Reference Release for Intel® Edge Platforms (Intel® Core™ i5 processor 14500T)
+## Android* Base BSP Reference Release for Intel® Edge Platforms (Intel® Core™ i5 processor 14500T)
 
 Engineering Candidate 1 Release
 
@@ -10,15 +10,15 @@ February 2026
 This document provides instructions for building and loading Android\*
 OS on Intel® Core™ Processors (14th Gen) for Edge Platforms.
     
-> **Note**
+> **Note:**
 > This release is intended for testing and evaluation on the platform
 only. It is not for production use.
 
 You are recommended to review the release information before proceeding
-with this Get Started Guide. For release information, notes, and
+with this Getting Started Guide. For release information, notes, and
 references, refer to the following documents:
 
-* Android\* OS on Intel® Core™ Processors (14th Gen) for Edge Platforms (Code named Raptor Lake‑S Refresh) -- Release Notes (Published in [GitHub](https://github.com/edge-aosp-bsp/manifest/tree/master)) 
+* Android* Base BSP Reference Release for Intel® Edge Platforms (Intel® Core™ i5 processor 14500T) Release Notes (Published in [GitHub](https://github.com/edge-aosp-bsp/manifest/tree/master)) 
 
 # Terminology
 
@@ -30,6 +30,7 @@ references, refer to the following documents:
 | BM              | BareMetal refers to an Android system that runs without a hypervisor.        |
 | BSP             | Board Support Package                                                        |
 | CRB             | Customer Reference Board                                                     |
+| EC              | Engineering Candidate                                                        |
 | GIT             | Git — Version control system                                                 |
 | HDA             | High-Definition Audio                                                        |
 | IFWI            | Intel Firmware Interface                                                     |
@@ -41,6 +42,8 @@ references, refer to the following documents:
 | OS              | Operating System                                                             |
 | PCH‑IO          | Platform Controller Hub — I/O Configuration                                  |
 | Raptor Lake-S   | Intel® Core™ Processors (14th Gen) for Edge Platforms (Refresh)              |
+| RDC             | Resource and Documentation Center                                            |
+| RVP             | Reference Validation Platform                                                |
 | SATA            | Serial ATA (Serial Advanced Technology Attachment)                           |
 | SELinux         | Security-Enhanced Linux                                                      |
 | TCC             | Intel® Time Coordinated Computing                                            |
@@ -48,9 +51,6 @@ references, refer to the following documents:
 | USB             | Universal Serial Bus                                                         |
 | VMX             | Virtual Machine Extensions                                                   |
 | VT-d            | Virtualization Technology for Directed I/O                                   |
-| EC           | Engineering Candidate                                   |
-| RDC           | Resource and Documentation Center                                   |
-| RVP | Reference Validation Platform |
 
 
 ## Intended Audience
@@ -68,7 +68,7 @@ Contact your Intel representative for support or submit an issue to
 
 | Documentation on GitHub | Document No./Location |
 |---------|------------------------|
-| Android* OS on Intel® Core™ i5 processor 14500T for Edge Platforms (Code named Raptor Lake‑S Refresh) – Release Notes |  [GitHub](https://github.com/edge-aosp-bsp/manifest/tree/master) |
+| Android* Base BSP Reference Release for Intel® Edge Platforms (Intel® Core™ i5 processor 14500T) Release Notes |  [GitHub](https://github.com/edge-aosp-bsp/manifest/tree/master) |
 | Raptor Lake‑S Refresh Android Manifest File | [GitHub](https://github.com/edge-aosp-bsp/manifest/tree/master) |
 
 
@@ -77,8 +77,8 @@ Log in to the Resource and Documentation Center
 to search for and download the document numbers listed in the following
 table. Contact your Intel field representative for access.
 
-> **Note**
-> Note:	Third-party links are provided as a reference only. Intel does not control or audit third-party benchmark data or the websites referenced in this document. You should visit the referenced website and confirm whether the referenced data are accurate. 
+> **Note:**
+> Third-party links are provided as a reference only. Intel does not control or audit third-party benchmark data or the websites referenced in this document. You should visit the referenced website and confirm whether the referenced data are accurate. 
 
 
 | Documentation on Intel RDC | Document No./Location |
@@ -117,19 +117,19 @@ Edge Platforms Reference UEFI BIOS/IFWI ([Document Number:
 
 * **High-speed network** connectivity
 
-### Notes
+### Notes:
 
 1. Although Android* is typically built using a GNU/Linux* or macOS* operating system, Intel recommends building the Android images on Ubuntu* 22.04. For setup instructions for other operating systems, refer to the [**“Establishing a Build Environment”**](https://source.android.com/docs/setup/start/requirements) section on the AOSP website.
 
 2. Ensure that all Android build prerequisites are met before starting the build process.
-``
 
-## Set up the Build environment
+
+## Set up the Build Environment
 
 The Android source code consists of multiple Git\* repositories. The
 repo tool makes it easy to work with those repositories. Refer to the
-[Git Setup for build
-environment](#git-setup-for-build-environment) if you need
+[Git Setup for Build
+Environment](#git-setup-for-build-environment) if you need
 to set up Git on your build machine.
 
 1.  Create a local bin/ directory, download the repo tool to thatdirectory, and make the binary executable with the following commands:
@@ -178,7 +178,7 @@ sudo apt install -y \
   intel-oneapi-mkl-devel-32bit-2021.1.1
 ```
 
-> **Note**
+> **Note:**
 > If you encounter network connectivity issues, you can use the following commands
 > to bypass Intel’s network proxy settings. To disable proxy settings:
 
@@ -212,7 +212,7 @@ mv BM_BSP_2026_Q1_v1_A16.xml ~/.
 mkdir ~/rpl-android-bm
 cd ~/rpl-android-bm
 ```
-3.  Download the source code from the manifest.# For the latest on the branch:
+3.  Download the source code from the manifest. For the latest on the branch:
 ```bash
 # For the latest on the branch:
 repo init -u https://github.com/edge-aosp-bsp/manifest.git  
@@ -319,7 +319,7 @@ First, extract the caas-flashfile-\<\$variant\>.iso.zip file.
 
 Alternatively, on Ubuntu, you can also use the dd command.
 
-**[IMPORTANT NOTICE:]** Replace the /dev/sdc below with the target USB device node name.
+**[IMPORTANT NOTICE]** Replace the /dev/sdc below with the target USB device node name.
 
 ```bash
 unzip caas-flashfile-userdebug.iso.zip
@@ -360,10 +360,10 @@ start Android.
 
 ![Android Home Screen](./media/image7.png)
 
-> **Note**
+> **Note:**
 > You can select to use NVME or SATA as the storage.
 
-## Git Setup for build environment
+## Git Setup for Build Environment
 Git must be set up on your build machine to run repo init. Use the command below as a guideline:  
 
 \# Setup git config with your name and email ID. Add proxy settings if behind a firewall  
@@ -425,6 +425,7 @@ under license.
 © Intel Corporation. Intel, the Intel logo, and other Intel marks are
 trademarks of Intel Corporation or its subsidiaries. Other names and
 brands may be claimed as the property of others.
+
 
 
 
