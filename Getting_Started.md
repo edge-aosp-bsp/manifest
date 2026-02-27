@@ -1,5 +1,5 @@
 # Getting Started Guide
-## Android* Base BSP Reference Release for Intel® Edge Platforms (Intel® Core™ i5 processor 14500T)
+## Android* 16 Base BSP Reference Release for Intel® Edge Platforms (Intel® Core™ i5 processor 14500T)
 
 Engineering Candidate 1 Release
 
@@ -8,7 +8,7 @@ February 2026
 # Introduction
 
 This document provides instructions for building and loading Android\*
-OS on Intel® Core™ i5 processor 14500T for Edge Platforms.
+16 on Intel® Core™ i5 processor 14500T for Edge Platforms.
     
 > **Note:**
 > This release is intended for testing and evaluation on the platform
@@ -18,7 +18,7 @@ You are recommended to review the release information before proceeding
 with this Getting Started Guide. For release information, notes, and
 references, refer to the following documents:
 
-* Android* Base BSP Reference Release for Intel® Edge Platforms (Intel® Core™ i5 processor 14500T) Release Notes (Published in [GitHub](https://github.com/edge-aosp-bsp/manifest/blob/master/README.md)) 
+* Android* 16 Base BSP Reference Release for Intel® Edge Platforms (Intel® Core™ i5 processor 14500T) Release Notes (Published in [GitHub](https://github.com/edge-aosp-bsp/manifest/blob/master/README.md)) 
 
 # Terminology
 
@@ -68,7 +68,7 @@ Contact your Intel representative for support or submit an issue to
 
 | Documentation on GitHub | Document No./Location |
 |---------|------------------------|
-| Android* Base BSP Reference Release for Intel® Edge Platforms (Intel® Core™ i5 processor 14500T) Release Notes |  [GitHub](https://github.com/edge-aosp-bsp/manifest/blob/master/README.md) |
+| Android* 16 Base BSP Reference Release for Intel® Edge Platforms (Intel® Core™ i5 processor 14500T) Release Notes |  [GitHub](https://github.com/edge-aosp-bsp/manifest/blob/master/README.md) |
 | Raptor Lake‑S Refresh Android Manifest File | [GitHub](https://github.com/edge-aosp-bsp/manifest/blob/master/stable-build/A16/BM_BSP_2026_Q1_v1_A16.xml) |
 
 
@@ -423,6 +423,7 @@ under license.
 © Intel Corporation. Intel, the Intel logo, and other Intel marks are
 trademarks of Intel Corporation or its subsidiaries. Other names and
 brands may be claimed as the property of others.
+
 
 
 
