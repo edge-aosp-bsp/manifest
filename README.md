@@ -1,5 +1,5 @@
 # Release Notes
-## Android* Base BSP Reference Release for Intel® Edge Platforms (Intel® Core™ i5 processor 14500T)
+## Android* 16 Base BSP Reference Release for Intel® Edge Platforms (Intel® Core™ i5 processor 14500T)
 
 
 Engineering Candidate 1 Release 
@@ -8,9 +8,9 @@ February 2026
 
 # 1.0 Introduction
 
-This document provides release specific information about the Android* base BSP reference stack release supported on Intel Edge Platforms (Intel® Core™ i5 processor 14500T) running Android* in a bare-metal OS environment.  
+This document provides release specific information about the Android* 16 base BSP reference stack release supported on Intel Edge Platforms (Intel® Core™ i5 processor 14500T) running Android* in a bare-metal OS environment.  
 
-For instructions on building and loading Android* OS on the Intel® Core™ i5 processor 14500T for Edge Platforms, refer to the Android* OS on Intel® Core™ i5 processor 14500T for Edge Platforms Getting Started Guide (Published in [GitHub](https://github.com/edge-aosp-bsp/manifest/blob/master/Getting_Started.md)).
+For instructions on building and loading Android* OS on the Intel® Core™ i5 processor 14500T for Edge Platforms, refer to the Android* 16 Base BSP Reference Release for Intel® Edge Platforms (Intel® Core™ i5 processor 14500T) Getting Started Guide (Published in [GitHub](https://github.com/edge-aosp-bsp/manifest/blob/master/Getting_Started.md)).
 
     
 > **Note**
@@ -52,7 +52,7 @@ Contact your Intel representative for support or submit an issue to
 
 | Documentation on GitHub | Document No./Location |
 |---------|------------------------|
-| Android* base BSP Reference Release for Intel® Edge Platforms (Intel® Core™ i5 processor 14500T) – Get started guide |  [GitHub](https://github.com/edge-aosp-bsp/manifest/blob/master/Getting_Started.md) |
+|Android* 16 Base BSP Reference Release for Intel® Edge Platforms (Intel® Core™ i5 processor 14500T) - Getting Started Guide |  [GitHub](https://github.com/edge-aosp-bsp/manifest/blob/master/Getting_Started.md) |
 | Raptor Lake‑S Refresh Android Manifest File | [GitHub](https://github.com/edge-aosp-bsp/manifest/blob/master/stable-build/A16/BM_BSP_2026_Q1_v1_A16.xml) |
 
 Log in to the Resource and Documentation Center
@@ -185,6 +185,7 @@ under license.
 © Intel Corporation. Intel, the Intel logo, and other Intel marks are
 trademarks of Intel Corporation or its subsidiaries. Other names and
 brands may be claimed as the property of others.
+
 
 
 
