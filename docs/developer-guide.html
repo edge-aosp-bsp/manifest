@@ -34,6 +34,7 @@
         <a href="#static-location-service">Static Location Service</a>
         <a href="#read-location">Read Location</a>
         <a href="#write-location">Write / Update Location</a>
+        <a href="#trusty-validation">Validating Trusty Enablement</a>
       </div>
       <div class="sidebar-group">
         <div class="sidebar-group-title">Other docs</div>
@@ -43,9 +44,10 @@
     </aside>
 
     <main class="doc-content">
-      <span class="badge badge-new">Release 1.0 &middot; PV &middot; July 2026</span>
+      <span class="badge badge-new">Release 1.1 &middot; September 2026</span>
       <h1 style="margin-top:16px;">Developer Guide</h1>
-      <p style="font-size:16px;">Provides API references for application developers who build applications on the Android* 16 Base BSP Reference Release for Edge Platforms.</p>
+      <p style="font-size:16px;">Edge Platforms &middot; Intel&reg; Core&trade; Processor (14th Gen), Intel&reg; Processor N150, Intel&reg; Processor N250, and Intel&reg; Core&trade; 3 Processor N355</p>
+      <p>This Developer Guide provides implementation and validation information for the Android* 16 Base BSP Reference Release for Intel&reg; Core&trade; Processor (14th Gen) (code named Raptor Lake-S Refresh); and Intel&reg; Processor N150, Intel&reg; Processor N250, and Intel&reg; Core&trade; 3 Processor N355 (code named Twin Lake).</p>
 
       <h2 id="static-location-service">Static Location Service</h2>
       <p>This section provides guidance for application developers to read or write the device's statically configured location.</p>
@@ -83,6 +85,40 @@ if (location != null) {
 ILocationControlService service = ILocationControlService.Stub.asInterface(binder);
 
 service.setHalLocation(12.9716, 77.5946);</code></pre>
+
+      <h2 id="trusty-validation">Validating Trusty Enablement</h2>
+      <p>Trusty is a secure operating system that provides a Trusted Execution Environment (TEE) for Android and supports security services, including Gatekeeper and KeyMint. In this release, Trusty is supported only on Intel&reg; Core&trade; Processor (14th Gen). Use the following steps to confirm that Trusty is correctly enabled on the flashed device.</p>
+      <div class="note"><strong>Note:</strong> Run these checks using <code>adb</code> after the device has fully booted into Android. The image must be built with Trusty enabled (see the Trusty Build section of the <a href="getting-started.html#download-build">Getting Started Guide</a>).</div>
+
+      <h3>Step 1: Verify the Trusty HAL Properties</h3>
+      <p>Confirm that the Gatekeeper and Keystore hardware-selection properties are set to Trusty.</p>
+      <p>Check the Gatekeeper property:</p>
+      <pre><code>adb shell getprop ro.hardware.gatekeeper</code></pre>
+      <p>Expected output:</p>
+      <pre><code>trusty</code></pre>
+      <p>Check the Keystore property:</p>
+      <pre><code>adb shell getprop ro.hardware.keystore</code></pre>
+      <p>Expected output:</p>
+      <pre><code>trusty</code></pre>
+
+      <h3>Step 2: Verify the Trusty Device Nodes Are Present</h3>
+      <p>Verify that the Trusty IPC and log device nodes are exposed by the kernel:</p>
+      <pre><code>adb shell ls -la /dev/trusty*</code></pre>
+      <p>Expected output (device numbers may vary):</p>
+      <pre><code>crw-rw---- 1 system drmrpc 246,   0 2026-09-16 18:18 /dev/trusty-ipc-dev0
+crw------- 1 root   root    10, 259 2026-09-16 18:18 /dev/trusty-log0</code></pre>
+      <p>The check passes when both <code>/dev/trusty-ipc-dev0</code> and <code>/dev/trusty-log0</code> are listed.</p>
+
+      <h3>Step 3: Confirm the KeyMint and Gatekeeper Services Are Backed by Trusty</h3>
+      <p>Verify that the Trusty-backed KeyMint and Gatekeeper HAL services are running:</p>
+      <pre><code>adb shell ps -ef | grep -iE "keymint|gatekeeper"</code></pre>
+      <p>Example output (PIDs, start times, and formatting may vary):</p>
+      <pre><code>nobody   369  1 0 23:18:01 ?  00:00:00 android.hardware.security.keymint-service.rust.trusty --dev /dev/trusty-ipc-dev0
+system   612  1 0 23:18:09 ?  00:00:00 android.hardware.gatekeeper-service.trusty --dev /dev/trusty-ipc-dev0
+system   728  1 0 23:18:10 ?  00:00:00 gatekeeperd /data/misc/gatekeeper</code></pre>
+      <p>The Trusty-specific KeyMint and Gatekeeper HAL executables are the primary indicators that Trusty is enabled. Both <code>android.hardware.security.keymint-service.rust.trusty</code> and <code>android.hardware.gatekeeper-service.trusty</code> must be present to confirm that the two HAL services are backed by Trusty. If <code>android.hardware.gatekeeper-service.nonsecure</code> appears instead, Gatekeeper is running without Trusty backing.</p>
+      <p>The <code>gatekeeperd</code> process is expected, but its presence alone does not prove that Trusty is enabled. Verify that the Trusty-specific HAL executables shown above are also running.</p>
+      <div class="note"><strong>Note:</strong> If any of the checks above fail, verify that the target platform is Intel&reg; Core&trade; Processor (14th Gen), and that <code>ENABLE_TRUSTY=true</code> was exported before running <code>lunch</code>.</div>
 
       <div class="note">For release details, see <a href="release-notes.html">Release Notes</a>. For build and flashing instructions, see the <a href="getting-started.html">Getting Started Guide</a>. Contact your Intel representative or email to <a href="http://premiersupport.intel.com/">premiersupport.intel.com</a> for support.</div>
     </main>

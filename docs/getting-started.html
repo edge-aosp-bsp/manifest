@@ -36,6 +36,8 @@
         <a href="#download-build">Download and Build the Source Code</a>
         <a href="#flashing">Flash and Boot Up the System</a>
         <a href="#bios-settings">BIOS Settings</a>
+        <a href="#git-setup">Git Setup for Build Environment</a>
+        <a href="#references">References</a>
       </div>
       <div class="sidebar-group">
         <div class="sidebar-group-title">Other docs</div>
@@ -45,9 +47,11 @@
     </aside>
 
     <main class="doc-content">
-      <span class="badge badge-new">Release 1.0 &middot; PV &middot; July 2026</span>
+      <span class="badge badge-new">Release 1.1 &middot; September 2026</span>
       <h1 style="margin-top:16px;">Getting Started Guide</h1>
-      <p style="font-size:16px;">Build and flash Android 16* Base BSP on Intel&reg; Core&trade; Processor (14th Gen) for Edge Platforms.</p>
+      <p style="font-size:16px;">Edge Platforms &middot; Intel&reg; Core&trade; Processor (14th Gen), Intel&reg; Processor N150, Intel&reg; Processor N250, and Intel&reg; Core&trade; 3 Processor N355</p>
+      <p>This guide provides instructions for building and installing the Android* 16 Base BSP Reference Release for Intel&reg; Core&trade; Processor (14th Gen) (code named Raptor Lake-S Refresh); and Intel&reg; Processor N150, Intel&reg; Processor N250, and Intel&reg; Core&trade; 3 Processor N355 (code named Twin Lake).</p>
+      <div class="note"><strong>Note:</strong> The versions of the Android Common Kernel and AOSP open-source software components referenced in this release represent the Intel-validated baseline for the platform. Customers are encouraged to evaluate and integrate updates to these open-source components as they become available from the open-source community.</div>
 
       <div class="note">Review the <a href="release-notes.html">Release Notes</a> before proceeding with this guide.</div>
 
@@ -57,17 +61,25 @@
         <li>64-bit workstation running Ubuntu* 22.04 (Jammy Jellyfish)</li>
         <li>Python 3.6 or later</li>
         <li>At least 400 GB free disk space</li>
+        <li>High-speed Internet access</li>
       </ul>
       <h3>Target Hardware</h3>
       <ul>
-        <li>Intel&reg; Core&trade; Processor (14th Gen) for Edge Platforms silicon</li>
-        <li>Minimum 500 GB storage</li>
-        <li>Latest IFWI flashed (see Document <a href="https://www.intel.com/content/www/us/en/secure/design/confidential/software-kits/kit-details.html?kitId=852225">852225</a>)</li>
+        <li>Intel&reg; Core&trade; Processor (14th Gen) (code named Raptor Lake-S Refresh)</li>
+        <li>Intel&reg; Processor N150, Intel&reg; Processor N250, and Intel&reg; Core&trade; 3 Processor N355 (code named Twin Lake)</li>
+        <li>Minimum 400 GB storage</li>
+        <li>Flashed with the latest IFWI corresponding to the target platform (see table below)</li>
         <li>High-speed network connectivity</li>
       </ul>
+      <table class="table-spec">
+        <tr><th>Platform</th><th>Reference UEFI BIOS/IFWI Version</th><th>Document</th></tr>
+        <tr><td>Intel&reg; Core&trade; Processor (14th Gen)</td><td><code>7117_51</code></td><td><a href="https://www.intel.com/content/www/us/en/secure/design/confidential/software-kits/kit-details.html?kitId=852225">852225</a></td></tr>
+        <tr><td>Intel&reg; Processor N150, Intel&reg; Processor N250, and Intel&reg; Core&trade; 3 Processor N355</td><td><code>7113_51</code></td><td><a href="https://www.intel.com/content/www/us/en/secure/design/confidential/software-kits/kit-details.html?kitId=919389">919389</a></td></tr>
+      </table>
       <div class="note"><strong>Note:</strong> Intel recommends building on Ubuntu* 22.04. See <a href="https://source.android.com/docs/setup/start/requirements">Establishing a Build Environment</a> on the AOSP website for other OS configurations.</div>
 
       <h2 id="build-environment">Set Up the Build Environment</h2>
+      <p>The Android source code is distributed across multiple Git* repositories. The repo tool simplifies managing and synchronizing those repositories. If Git is not yet configured on your build machine, see <a href="#git-setup">Git Setup for Build Environment</a>.</p>
       <p>Install the repo tool:</p>
       <pre><code>mkdir -p ~/bin
 curl https://storage.googleapis.com/git-repo-downloads/repo &gt; ~/bin/repo
@@ -79,34 +91,85 @@ sudo apt-get install -y wget openjdk-8-jdk git ccache automake \
    lzop bison gperf build-essential zip curl \
    zlib1g-dev g++-multilib python3-networkx \
    libxml2-utils bzip2 libbz2-dev libbz2-1.0 \
-   ninja-build cmake pkg-config xorriso mtools file
+   libghc-bzlib-dev squashfs-tools pngcrush \
+   schedtool dpkg-dev liblz4-tool make optipng maven \
+   libssl-dev bc bsdmainutils gettext python3-mako \
+   libelf-dev sbsigntool dosfstools mtools efitools \
+   python3-pystache git-lfs python-is-python3 flex clang libncurses5 \
+   fakeroot ncurses-dev xz-utils cryptsetup-bin \
+   apt-transport-https ca-certificates curl lsb-release \
+   rsync vim python-six kmod glslang-tools \
+   software-properties-common cpio python3-pip ninja-build \
+   cutils cmake pkg-config xorriso mtools libjson-c-dev file
+
 sudo pip3 install meson==1.8.3 mako==1.1.0 dataclasses pycryptodome ply==3.11</code></pre>
-      <div class="note"><strong>If you encounter proxy issues,</strong> disable proxy with <code>unset no_proxy</code> / <code>unset NO_PROXY</code>, then run apt with <code>sudo -E apt update</code>.</div>
+      <p>Install the Intel&reg; oneAPI dependencies required by the build environment:</p>
+      <pre><code>wget -O- https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB \
+   | gpg --dearmor | sudo tee /usr/share/keyrings/oneapi-archive-keyring.gpg &gt; /dev/null &amp;&amp; \
+   echo "deb [signed-by=/usr/share/keyrings/oneapi-archive-keyring.gpg] https://apt.repos.intel.com/oneapi all main" \
+   | sudo tee /etc/apt/sources.list.d/oneAPI.list
+
+sudo apt-get update
+
+sudo apt install -y \
+  intel-oneapi-ipp-devel-2021.10 \
+  intel-oneapi-mkl-devel-2021.1.1 \
+  intel-oneapi-ipp-devel-32bit-2021.10 \
+  intel-oneapi-mkl-devel-32bit-2021.1.1</code></pre>
+      <div class="note"><strong>Note:</strong> If you encounter network connectivity issues, use the following commands to bypass the network proxy settings. In some cases, the system may use the default <code>no_proxy</code> configuration; setting a dummy value overrides this behavior.</div>
+      <pre><code>unset no_proxy
+unset NO_PROXY
+export no_proxy=localhost
+export NO_PROXY=localhost</code></pre>
+      <p>After updating the <code>no_proxy</code> settings, run apt commands with the <code>-E</code> option:</p>
+      <pre><code>sudo -E apt update
+sudo -E apt install &lt;packages&gt;</code></pre>
 
       <h2 id="download-build">Download and Build the Source Code</h2>
-      <p>Manifest for this release: <code>BM_BSP_2026_Q3_V1_A16.xml</code> (<a href="https://github.com/edge-aosp-bsp/manifest/blob/master/stable-build/A16/">GitHub</a>).</p>
+      <p>Manifest for this release: <code>BM_BSP_2026_Q3_V2_A16.xml</code> (<a href="https://github.com/edge-aosp-bsp/manifest/blob/master/stable-build/A16/BM_BSP_2026_Q3_V2_A16.xml">GitHub</a>). The release manifests are available in the <a href="https://github.com/edge-aosp-bsp/manifest/blob/master/stable-build/A16/">stable-build/A16</a> directory.</p>
+      <p>Download the manifest, and then move it to your home directory:</p>
+      <pre><code>mv BM_BSP_2026_Q3_V2_A16.xml ~/.</code></pre>
+      <p>Create a working directory and download the source code:</p>
       <pre><code>mkdir ~/rpl-android-bm
 cd ~/rpl-android-bm
 
 repo init -u https://github.com/edge-aosp-bsp/manifest.git
 mkdir .repo/manifests
-cp ~/BM_BSP_2026_Q3_V1_A16.xml .repo/manifests/.
-repo init -u https://github.com/edge-aosp-bsp/manifest.git -m BM_BSP_2026_Q3_V1_A16.xml
+cp ~/BM_BSP_2026_Q3_V2_A16.xml .repo/manifests/.
+repo init -u https://github.com/edge-aosp-bsp/manifest.git -m BM_BSP_2026_Q3_V2_A16.xml
 
 repo sync -c --force-sync -j16
 repo forall -c git lfs pull</code></pre>
       <div class="note">Synchronization can take a longer time. This behavior is expected. Adjust <code>-j</code> based on your preferred CPU cores.</div>
 
-      <h3>Integrate the Trusty Binary</h3>
-      <pre><code>cp lk.bin ~/rpl-android-bm/vendor/intel/fw/trusty-release-binaries/</code></pre>
-      <p>Contact your Intel representative for access to the Trusty source and build procedure.</p>
-
       <h3>Build the Android Image</h3>
-      <pre><code>source build/envsetup.sh
-lunch caas-userdebug
-make flashfiles BASE_LINUX_INTEL_LTS2024_KERNEL=true -j16
+      <p>Supported build targets are <code>caas-userdebug</code> and <code>caas-user</code>. The examples below use <code>caas-userdebug</code>, which is intended for development and debugging, including root access and debug tools. Use <code>caas-user</code> for a release-oriented configuration with reduced debugging capability.</p>
+      <div class="note"><strong>Note:</strong> For Intel&reg; Processor N150, Intel&reg; Processor N250, and Intel&reg; Core&trade; 3 Processor N355, use the Default Build. The Trusty Build is supported only on Intel&reg; Core&trade; Processor (14th Gen).</div>
 
-find out -name *.tar.gz
+      <h3>Default Build</h3>
+      <pre><code># Export the Trusty flag before lunch
+export ENABLE_TRUSTY=false
+
+source build/envsetup.sh
+lunch caas-userdebug
+make flashfiles BASE_LINUX_INTEL_LTS2024_KERNEL=true ENABLE_AVF=false -j16</code></pre>
+
+      <h3>Trusty Build</h3>
+      <p>Supported only on Intel&reg; Core&trade; Processor (14th Gen).</p>
+      <p><strong>Step 1:</strong> Copy the Trusty binary:</p>
+      <pre><code>cp lk.bin ~/rpl-android-bm/vendor/intel/fw/trusty-release-binaries/</code></pre>
+      <div class="note"><strong>Note:</strong> Contact your Intel representative for access to the Trusty source code and build procedure.</div>
+      <p><strong>Step 2:</strong> Build with Trusty enabled:</p>
+      <pre><code># Export the Trusty flag before lunch
+export ENABLE_TRUSTY=true
+
+source build/envsetup.sh
+lunch caas-userdebug
+make flashfiles BASE_LINUX_INTEL_LTS2024_KERNEL=true -j16</code></pre>
+
+      <h3>Build Output</h3>
+      <p>The generated build output files are available in <code>~/rpl-android-bm/out/target/product/caas/</code>:</p>
+      <pre><code>find out -name *.tar.gz
 # out/target/product/caas/caas-releasefile-userdebug.iso.tar.gz
 # out/target/product/caas/caas-releasefiles-userdebug.tar.gz</code></pre>
 
@@ -128,14 +191,41 @@ dd if=./caas-flashfile-userdebug.iso of=/dev/sdc bs=1024M</code></pre>
       <div class="note">You can select NVMe or SATA as the storage target.</div>
 
       <h2 id="bios-settings">BIOS Settings</h2>
+      <p>Verify that the BIOS settings match the values in the following table. These values are the default settings for the supported IFWI versions. Press the appropriate BIOS setup key (for example, F2, Del, or F12) during startup to access the BIOS Setup menu.</p>
       <table class="table-spec">
         <tr><th>Setting</th><th>Menu Path</th><th>Value</th></tr>
-        <tr><td>Intel (VMX) Virtualization</td><td>Advanced &rarr; CPU Configuration</td><td>Enabled</td></tr>
-        <tr><td>VT-d</td><td>Advanced &rarr; System Agent (SA) Configuration</td><td>Enabled</td></tr>
-        <tr><td>Intel&reg; TCC Mode</td><td>Advanced &rarr; Time Coordinated Computing</td><td>Disabled</td></tr>
-        <tr><td>#AC Split Lock</td><td>Advanced &rarr; Time Coordinated Computing</td><td>Disabled</td></tr>
-        <tr><td>OnBoard NIC</td><td>Advanced &rarr; PCH-IO Configuration &rarr; EFI Network</td><td>OnBoard NIC</td></tr>
+        <tr><td>Intel (VMX) Virtualization</td><td>Intel Advanced Menu &rarr; CPU Configuration</td><td>Enabled</td></tr>
+        <tr><td>VT-d</td><td>Intel Advanced Menu &rarr; System Agent (SA) Configuration</td><td>Enabled</td></tr>
+        <tr><td>Intel&reg; TCC Mode</td><td>Intel Advanced Menu &rarr; Intel&reg; Time Coordinated Computing</td><td>Disabled</td></tr>
+        <tr><td>#AC Split Lock</td><td>Intel Advanced Menu &rarr; Intel&reg; Time Coordinated Computing</td><td>Disabled</td></tr>
+        <tr><td>OnBoard NIC</td><td>Intel Advanced Menu &rarr; PCH-IO Configuration &rarr; EFI Network</td><td>OnBoard NIC</td></tr>
       </table>
+      <div class="note"><strong>Note:</strong> The steps may vary depending on the BIOS. Intel&reg; TCC Mode and #AC Split Lock are disabled by default because they are intended for real-time/deterministic workloads and are not required for standard Android BSP bring-up. Leave them disabled unless your use case specifically requires TCC.</div>
+
+      <h2 id="git-setup">Git Setup for Build Environment</h2>
+      <p>Git must be set up on your build machine to run <code>repo init</code>. Configure Git with your name and email address, and add proxy settings if you are behind a firewall:</p>
+      <pre><code>cd /home/$USER
+vi /home/$USER/.gitconfig</code></pre>
+      <p>Append the following lines to the <code>.gitconfig</code> file:</p>
+      <pre><code>[user]
+    email = &lt;your email&gt;
+    name = &lt;your name&gt;
+[http]
+    proxy = &lt;http_proxy&gt;
+[https]
+    proxy = &lt;https_proxy&gt;</code></pre>
+      <p>If required, create a symbolic link for Python 3 in the <code>/usr/bin</code> directory:</p>
+      <pre><code>sudo ln -sf /usr/bin/python3 /usr/bin/python</code></pre>
+
+      <h2 id="references">References</h2>
+      <table class="table-spec">
+        <tr><th>Document</th><th>Document No./Location</th></tr>
+        <tr><td>Android* 16 Base BSP Reference Release for Edge Platforms (supporting Intel&reg; Core&trade; Processor (14th Gen), Intel&reg; Processor N150, Intel&reg; Processor N250, and Intel&reg; Core&trade; 3 Processor N355) - Release Notes</td><td><a href="release-notes.html">Release Notes</a></td></tr>
+        <tr><td>Android Manifest File (BM_BSP_2026_Q3_V2_A16.xml)</td><td><a href="https://github.com/edge-aosp-bsp/manifest/blob/master/stable-build/A16/BM_BSP_2026_Q3_V2_A16.xml">GitHub</a></td></tr>
+        <tr><td>Intel&reg; Core&trade; Processor (14th Gen) (code named Raptor Lake-S Refresh) for Edge Platforms Reference UEFI BIOS/IFWI (ver. 7117_51)</td><td><a href="https://www.intel.com/content/www/us/en/secure/design/confidential/software-kits/kit-details.html?kitId=852225">852225</a></td></tr>
+        <tr><td>Intel&reg; Processor N150 &amp; N250 and Intel&reg; Core&trade; 3 Processor N355 for Edge Applications (IPU 2026.3) Firmware Best Known Configuration (BKC)</td><td><a href="https://www.intel.com/content/www/us/en/secure/design/confidential/software-kits/kit-details.html?kitId=919389">919389</a></td></tr>
+      </table>
+      <div class="note">Log in to the <a href="https://www.intel.com/content/www/us/en/resources-documentation/developer.html">Resource and Documentation Center</a> to search for and download the document numbers listed above. Contact your Intel field representative for access.</div>
 
       <div class="note">For complete release information, see the <a href="release-notes.html">Release Notes</a>, or email to <a href="http://premiersupport.intel.com/">premiersupport.intel.com</a>. For legal notices, see the <a href="disclaimer.html">Disclaimer</a> page. Contact your Intel representative for support.</div>
     </main>

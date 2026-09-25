@@ -36,7 +36,6 @@
         <a href="#hardware-configuration">Hardware Configuration</a>
         <a href="#release-information">Release Information</a>
         <a href="#product-features">Product Features</a>
-        <a href="#closed-issues">Closed Issues</a>
         <a href="#reference-documents">Reference Documents</a>
       </div>
       <div class="sidebar-group">
@@ -47,15 +46,15 @@
     </aside>
 
     <main class="doc-content">
-      <span class="badge badge-new">Release 1.0 &middot; PV &middot; July 2026</span>
+      <span class="badge badge-new">Release 1.1 &middot; September 2026</span>
       <h1 style="margin-top:16px;">Release Notes</h1>
-      <p style="font-size:16px;">Edge Platforms &middot; Intel&reg; Core&trade; Processor (14th Gen)</p>
+      <p style="font-size:16px;">Edge Platforms &middot; Intel&reg; Core&trade; Processor (14th Gen), Intel&reg; Processor N150, Intel&reg; Processor N250, and Intel&reg; Core&trade; 3 Processor N355</p>
 
       <h2 id="introduction">Introduction</h2>
-      <p>This document provides release specific information about the Android* 16 Base BSP reference release supported on Intel&reg; Core&trade; Processor (14th Gen) (code named Raptor Lake-S Refresh) running Android* 16 in a bare-metal OS environment.</p>
+      <p>This document provides release-specific information about the Android* 16 Base BSP reference release for Intel&reg; Core&trade; Processor (14th Gen) (code named Raptor Lake-S Refresh); and Intel&reg; Processor N150, Intel&reg; Processor N250, and Intel&reg; Core&trade; 3 Processor N355 (code named Twin Lake), running Android* 16 in a bare-metal OS environment.</p>
       <div class="note"><strong>Note:</strong> The versions of the Android Common Kernel and AOSP open-source software components referenced in this release represent the Intel-validated baseline for the platform. Customers are encouraged to evaluate and integrate updates to these open-source components as they become available from the open-source community.</div>
       <p>For build and flashing instructions, see the <a href="getting-started.html">Getting Started Guide</a>.</p>
-      <p><strong>Intended audience:</strong> OSVs/ISVs and OEMs/ODMs interested in using this BSP reference release to enable their customers.</p>
+      <p><strong>Intended audience:</strong> OSVs and ISVs interested in using the Android* 16 Base BSP Reference Release for Edge Platforms to enable their customers.</p>
       <p><strong>Customer support:</strong> Contact your Intel representative or submit an issue to <a href="http://premiersupport.intel.com/">premiersupport.intel.com</a>.</p>
 
       <h2 id="terminology">Terminology</h2>
@@ -77,6 +76,7 @@
         <tr><td>RVP</td><td>Reference Validation Platform</td></tr>
         <tr><td>Raptor Lake-S Refresh</td><td>Intel&reg; Core&trade; Processor (14th Gen)</td></tr>
         <tr><td>TEE</td><td>Trusted Execution Environment</td></tr>
+        <tr><td>Twin Lake</td><td>Intel&reg; Processor N150, Intel&reg; Processor N250, and Intel&reg; Core&trade; 3 Processor N355</td></tr>
       </table>
 
       <h2 id="hardware-configuration">Hardware Configuration</h2>
@@ -87,25 +87,39 @@
         <tr><td>Intel&reg; Core&trade; i5 processor 14500T</td><td>Edge</td></tr>
         <tr><td>Intel&reg; Core&trade; i7 processor 14700T</td><td>Edge</td></tr>
       </table>
+      <p><strong>Customer Reference Board:</strong> Twin Lake CRB</p>
+      <table class="table-spec">
+        <tr><th>Processor</th><th>Segment</th></tr>
+        <tr><td>Intel&reg; Processor N150</td><td>Edge</td></tr>
+        <tr><td>Intel&reg; Processor N250</td><td>Edge</td></tr>
+        <tr><td>Intel&reg; Core&trade; 3 Processor N355</td><td>Edge</td></tr>
+      </table>
 
       <h2 id="release-information">Release Information</h2>
-      <p><span class="badge badge-success">Production Version (PV) &mdash; Current</span></p>
+      <p><span class="badge badge-success">Release 1.1 &mdash; Current</span></p>
       <ul>
+        <li><a href="https://github.com/edge-aosp-bsp/manifest/tree/BM_BSP_2026_Q3_V1_A16">Release 1.0</a></li>
         <li><a href="https://github.com/edge-aosp-bsp/manifest/tree/BM_BSP_2026_Q2_V1_A16">Engineering Candidate 2 (EC2)</a></li>
         <li><a href="https://github.com/edge-aosp-bsp/manifest/tree/BM_BSP_2026_Q1_V1_A16">Engineering Candidate 1 (EC1)</a></li>
       </ul>
       <h3>Software Configuration</h3>
       <ul>
-        <li>PV Manifest File: <a href="https://github.com/edge-aosp-bsp/manifest/blob/master/stable-build/A16/BM_BSP_2026_Q3_V1_A16.xml">BM_BSP_2026_Q3_V1_A16.xml</a></li>
-        <li>UEFI Reference BIOS: Release Notes &amp; Package <a href="https://www.intel.com/content/www/us/en/secure/design/confidential/software-kits/kit-details.html?kitId=852225">852225</a></li>
+        <li>Release 1.1 Manifest File: <a href="https://github.com/edge-aosp-bsp/manifest/blob/master/stable-build/A16/BM_BSP_2026_Q3_V2_A16.xml">BM_BSP_2026_Q3_V2_A16.xml</a></li>
+        <li>UEFI Reference BIOS:
+          <ul>
+            <li>Raptor Lake-S Refresh: Release Notes &amp; Package <a href="https://www.intel.com/content/www/us/en/secure/design/confidential/software-kits/kit-details.html?kitId=852225">852225</a></li>
+            <li>Twin Lake: Release Notes &amp; Package <a href="https://www.intel.com/content/www/us/en/secure/design/confidential/software-kits/kit-details.html?kitId=919389">919389</a></li>
+          </ul>
+        </li>
       </ul>
       <table class="table-spec">
         <tr><th>Type</th><th>Description</th></tr>
-        <tr><td>Release Version</td><td>Production Version (PV)</td></tr>
+        <tr><td>Release Version</td><td>Release 1.1</td></tr>
         <tr><td>Build Target</td><td>caas-userdebug, caas-user</td></tr>
-        <tr><td>Tested Hardware</td><td>SR14 Raptor Lake-S DDR5 UDIMM 1DPC RVP, Intel&reg; Core&trade; Processor (14th Gen)</td></tr>
+        <tr><td>RPL Tested Hardware</td><td>SR14 Raptor Lake-S DDR5 UDIMM 1DPC RVP and Intel&reg; Core&trade; Processor (14th Gen)</td></tr>
+        <tr><td>TWL Tested Hardware</td><td>Intel&reg; Processor N150, Intel&reg; Processor N250, and Intel&reg; Core&trade; 3 Processor N355</td></tr>
         <tr><td>Android Version</td><td>Android 16</td></tr>
-        <tr><td>Kernel Version</td><td>6.12.89</td></tr>
+        <tr><td>Kernel Version</td><td>6.12.92</td></tr>
       </table>
 
       <h2 id="product-features">Product Features</h2>
@@ -137,21 +151,15 @@
         <tr><td>Security</td><td>Security-Trusty-TEE</td><td><span class="badge badge-success">Yes</span></td></tr>
       </table>
 
-      <h2 id="closed-issues">Closed Issues</h2>
-      <table class="table-spec">
-        <tr><th>Issue ID</th><th>Feature</th></tr>
-        <tr><td>NIACP3-1311</td><td>Device goes offline during CTS execution and gets stuck in Android UI intermittently</td></tr>
-        <tr><td>NIACP3-1168</td><td>Error while trying to read reboot reason while Android boots up</td></tr>
-      </table>
-
       <h2 id="reference-documents">Reference Documents</h2>
       <table class="table-spec">
         <tr><th>Document</th><th>RDC Doc. No./Location</th></tr>
-        <tr><td>Android* 16 Base BSP Reference Release for Edge Platforms (supporting Intel&reg; Core&trade; Processor (14th Gen)) - Getting Started Guide</td><td><a href="getting-started.html">GitHub</a></td></tr>
-        <tr><td>Raptor Lake-S Refresh Android Manifest File</td><td><a href="https://github.com/edge-aosp-bsp/manifest/blob/master/stable-build/A16/BM_BSP_2026_Q3_V1_A16.xml">GitHub</a></td></tr>
-        <tr><td>13th Gen Intel&reg; Core&trade; Processor and Intel&reg; Core&trade; Processor (14th Gen) (Code named Raptor Lake&#8209;S/S Refresh) for Edge Platforms Reference UEFI BIOS/IFWI IPU 2026.3 (ver 7116.51)</td><td><a href="https://www.intel.com/content/www/us/en/secure/design/confidential/software-kits/kit-details.html?kitId=852225">852225</a></td></tr>
+        <tr><td>Android* 16 Base BSP Reference Release for Edge Platforms (supporting Intel&reg; Core&trade; Processor (14th Gen), Intel&reg; Processor N150, Intel&reg; Processor N250, and Intel&reg; Core&trade; 3 Processor N355) - Getting Started Guide</td><td><a href="https://github.com/edge-aosp-bsp/manifest/blob/master/Getting_Started.md">GitHub</a></td></tr>
+        <tr><td>Android Manifest File</td><td><a href="https://github.com/edge-aosp-bsp/manifest/blob/master/stable-build/A16/BM_BSP_2026_Q3_V2_A16.xml">GitHub</a></td></tr>
+        <tr><td>13th Gen Intel&reg; Core&trade; Processor and Intel&reg; Core&trade; Processor (14th Gen) (Code named Raptor Lake&#8209;S/S Refresh) for Edge Platforms Reference UEFI BIOS/IFWI IPU 2026.3 (ver 7117.51)</td><td><a href="https://www.intel.com/content/www/us/en/secure/design/confidential/software-kits/kit-details.html?kitId=852225">852225</a></td></tr>
+        <tr><td>Intel&reg; Processor N150 &amp; N250 and Intel&reg; Core&trade; 3 Processor N355 for Edge Applications, IPU 2026.3</td><td><a href="https://www.intel.com/content/www/us/en/secure/design/confidential/software-kits/kit-details.html?kitId=919389">919389</a></td></tr>
       </table>
-      <div class="note">Log in to the <a href="https://www.intel.com/content/www/us/en/resources-documentation/developer.html">Resource and Documentation Center</a> to search for and download the document numbers listed in the following table.</div>
+      <div class="note">Log in to the <a href="https://www.intel.com/content/www/us/en/resources-documentation/developer.html">Resource and Documentation Center</a> to search for and download the document numbers listed in the table above. Contact your Intel field representative for access.</div>
       <p>For legal notices, see the <a href="disclaimer.html">Disclaimer</a> page.</p>
     </main>
   </div>
