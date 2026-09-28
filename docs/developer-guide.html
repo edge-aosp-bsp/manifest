@@ -34,7 +34,7 @@
         <a href="#static-location-service">Static Location Service</a>
         <a href="#read-location">Read Location</a>
         <a href="#write-location">Write / Update Location</a>
-        <a href="#trusty-validation">Validating Trusty Enablement</a>
+        <a href="#trusty-validation">Validate Trusty Enablement</a>
       </div>
       <div class="sidebar-group">
         <div class="sidebar-group-title">Other docs</div>
@@ -86,7 +86,7 @@ ILocationControlService service = ILocationControlService.Stub.asInterface(binde
 
 service.setHalLocation(12.9716, 77.5946);</code></pre>
 
-      <h2 id="trusty-validation">Validating Trusty Enablement</h2>
+      <h2 id="trusty-validation">Validate Trusty Enablement</h2>
       <p>Trusty is a secure operating system that provides a Trusted Execution Environment (TEE) for Android and supports security services, including Gatekeeper and KeyMint. In this release, Trusty is supported only on Intel&reg; Core&trade; Processor (14th Gen). Use the following steps to confirm that Trusty is correctly enabled on the flashed device.</p>
       <div class="note"><strong>Note:</strong> Run these checks using <code>adb</code> after the device has fully booted into Android. The image must be built with Trusty enabled (see the Trusty Build section of the <a href="getting-started.html#download-build">Getting Started Guide</a>).</div>
 
